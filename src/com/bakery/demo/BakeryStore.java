@@ -8,7 +8,7 @@ public class BakeryStore {
 		double amountBread = 0;
 		double amountRolls = 0;
 		
-		System.out.println("Welcome to the store");
+		System.out.println("Welcome to the store [v. 1.1]");
 		
 		if(arguments.length > 1) {
 			price1 = Double.parseDouble(arguments[0]);
