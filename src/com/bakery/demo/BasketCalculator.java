@@ -11,4 +11,8 @@ public class BasketCalculator {
 		total = (setBreadAmount * priceBread) +
 				(setRollsAmount * priceRoll);
 	}
+	
+	public double getBasketTotal() {
+		return total;
+	}
 }
