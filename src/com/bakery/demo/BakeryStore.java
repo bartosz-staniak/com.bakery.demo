@@ -25,5 +25,8 @@ public class BakeryStore {
 		
 		BasketCalculator basket = new BasketCalculator(price1, price2,
 				amountBread, amountRolls);
+		
+		System.out.println("Total order value: "
+				+ basket.getBasketTotal());
 	}
 }
