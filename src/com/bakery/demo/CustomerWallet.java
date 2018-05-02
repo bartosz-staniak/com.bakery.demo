@@ -7,7 +7,7 @@ public class CustomerWallet {
 		customerWallet = inMoney;
 	}
 	
-	public double showContents() {
+	public double getContents() {
 		return customerWallet;
 	}
 	
