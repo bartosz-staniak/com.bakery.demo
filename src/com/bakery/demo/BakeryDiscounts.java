@@ -12,6 +12,9 @@ public class BakeryDiscounts {
 			discount = 0.95;
 		else
 			discount = 0.9;
-			
+	}
+	
+	public double getDiscount() {
+		return discount;
 	}
 }
