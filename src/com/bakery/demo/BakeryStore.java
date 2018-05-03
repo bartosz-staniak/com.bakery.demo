@@ -21,6 +21,8 @@ public class BakeryStore {
 		}
 		
 		CustomerWallet wallet = new CustomerWallet(cash);
+		System.out.println("You currently have: " + wallet.getContents() + "EUR");
+		
 		
 		prices = new BakeryPrices(
 					price1, price2);
