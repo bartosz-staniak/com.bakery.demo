@@ -2,4 +2,4 @@
 
 Git repo demo
 
-CustomerWallet logic is still not included in main!
+Application meets requirements. Promoting to 1.2.
