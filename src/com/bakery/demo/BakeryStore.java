@@ -37,5 +37,7 @@ public class BakeryStore {
 		System.out.println("Total order value: "
 				+ ( basket.getBasketTotal() ) * ( discount.getDiscount() )
 				);
+		
+		wallet.payReceipt(cash);
 	}
 }
