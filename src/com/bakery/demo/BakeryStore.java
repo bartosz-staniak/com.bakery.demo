@@ -8,6 +8,7 @@ public class BakeryStore {
 		double amountBread = 0;
 		double amountRolls = 0;
 		double cash = 0;
+		double totalOrderValue = 0;
 		
 		System.out.println("Welcome to the store [v. 1.1]");
 		
@@ -34,9 +35,10 @@ public class BakeryStore {
 		
 		BakeryDiscounts discount = new BakeryDiscounts(basket.getBasketTotal());
 		
+		totalOrderValue = ( basket.getBasketTotal() ) * ( discount.getDiscount() );
+		
 		System.out.println("Total order value: "
-				+ ( basket.getBasketTotal() ) * ( discount.getDiscount() )
-				);
+				+ totalOrderValue );
 		
 		wallet.payReceipt(cash);
 	}
