@@ -7,6 +7,7 @@ public class BakeryStore {
 		double price2 = 0;
 		double amountBread = 0;
 		double amountRolls = 0;
+		double cash = 0;
 		
 		System.out.println("Welcome to the store [v. 1.1]");
 		
@@ -15,9 +16,13 @@ public class BakeryStore {
 			price2 = Double.parseDouble(arguments[1]);
 			amountBread = Double.parseDouble(arguments[2]);
 			amountRolls = Double.parseDouble(arguments[3]);
+			cash = Double.parseDouble(arguments[4]);
 			
 		}
-			prices = new BakeryPrices(
+		
+		CustomerWallet wallet = new CustomerWallet(cash);
+		
+		prices = new BakeryPrices(
 					price1, price2);
 		
 		prices.ShowPrices();
