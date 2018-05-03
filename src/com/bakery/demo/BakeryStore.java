@@ -40,6 +40,6 @@ public class BakeryStore {
 		System.out.println("Total order value: "
 				+ totalOrderValue );
 		
-		wallet.payReceipt(cash);
+		wallet.payReceipt(totalOrderValue);
 	}
 }
