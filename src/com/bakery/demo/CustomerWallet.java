@@ -12,7 +12,7 @@ public class CustomerWallet {
 	}
 	
 	public void payReceipt(double outMoney) {
-		if (outMoney < customerWallet) {
+		if (outMoney <= customerWallet) {
 			customerWallet -= outMoney;
 			System.out.println("Your current wallet"
 					+ "amount is: " + customerWallet);
