@@ -20,6 +20,6 @@ public class CustomerWallet {
 
 		else
 			System.out.println("Not enough money"
-					+ "in the wallet!");
+					+ " in the wallet!");
 	}
 }
