@@ -20,4 +20,16 @@ public class BakeryInput {
 		return value;
 	}
 	
+	public static void main(String[] arguments) {
+		BakeryInput inputTest = new BakeryInput();
+		
+		System.out.println("Enter a number:");
+		System.out.println("The number you have entered is: " 
+				+ inputTest.readValue());
+		
+		// The logic is broken. The program converts different
+		// input signs to numbers instead of returning the numbers
+		// that were entered.
+	}
+	
 }
