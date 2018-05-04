@@ -9,7 +9,9 @@ public class BakeryInput {
 		
 		try (BufferedInputStream buffer = new
 			BufferedInputStream(System.in)) {
-			// implement logic here
+				
+				value = (double) buffer.read();
+				
 		} catch (IOException except) {
 			System.out.println("Exception: " + except.getMessage());
 			return 0.0;
