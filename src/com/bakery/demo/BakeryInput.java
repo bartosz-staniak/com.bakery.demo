@@ -10,7 +10,9 @@
  		try (BufferedInputStream buffer = new
  			BufferedInputStream(System.in)) {
  				
- 				return value = buffer.read();
+ 				value = buffer.read();
+ 				buffer.close();
+ 				return value;
  				
  		} catch (IOException except) {
  			System.out.println("Exception: " + except.getMessage());
