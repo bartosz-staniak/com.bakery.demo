@@ -1,38 +1,41 @@
- package com.bakery.demo;
+package com.bakery.demo;
  
- import java.io.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
  
- public class BakeryInput {
+public class BakeryInput {
  
- 	public static double readValue() {
- 		double value = 0.0;
+ 	public double readValue() {
  		
- 		try (
- 			BufferedInputStream buffer = new
+ 		BufferedInputStream a_buffer = new
  				BufferedInputStream(System.in);
- 			DataInputStream dis = new
- 				DataInputStream(buffer)
- 			) {
- 				
- 				value = dis.readDouble();
- 				dis.close();
- 				return value;
- 				
- 		} catch (IOException except) {
- 			System.out.println("Exception: " + except.getMessage());
- 			return 0.0;
- 		}
+ 		BufferedReader b_buffer = new BufferedReader(
+ 				new InputStreamReader(a_buffer,
+ 						StandardCharsets.UTF_8));
  		
+ 		String original = "";
+		try {
+			original = b_buffer.readLine();
+		} catch (IOException e) {
+			System.out.println("Exception: " + e.getMessage());
+			e.printStackTrace();
+		}
+ 		double converted = Double.parseDouble(original);
+ 		
+ 	return converted;
+
  	}
  	
+
 	public static void main(String[] arguments) {
+		
+		BakeryInput input = new BakeryInput();
 		
 		System.out.println("Enter a number:");
 		System.out.println("The number you have entered is: " 
-				+ BakeryInput.readValue());
+				+ input.readValue());
 		
-		// The logic is still broken. The program does not return ASCII codes
-		// anymore. The output data is much stranger.
+		// The logic seems to be fixed.
 	}
 	
- }
+}
