@@ -1,17 +1,13 @@
 package com.bakery.demo;
  
 import java.io.*;
-import java.nio.charset.StandardCharsets;
  
 public class BakeryInput {
  
  	public double readValue() {
  		
- 		BufferedInputStream a_buffer = new
- 				BufferedInputStream(System.in);
  		BufferedReader b_buffer = new BufferedReader(
- 				new InputStreamReader(a_buffer,
- 						StandardCharsets.UTF_8));
+ 				new InputStreamReader(System.in));
  		
  		String original = "";
 		try {
@@ -35,7 +31,7 @@ public class BakeryInput {
 		System.out.println("The number you have entered is: " 
 				+ input.readValue());
 		
-		// The logic seems to be fixed.
+		// The logic seems to be fixed. And now code is shortened.
 	}
 	
 }
