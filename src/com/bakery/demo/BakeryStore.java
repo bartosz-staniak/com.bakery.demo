@@ -10,6 +10,8 @@ public class BakeryStore {
 		double cash = 0;
 		double totalOrderValue = 0;
 		
+		BakeryInput input = new BakeryInput();
+		
 		System.out.println("Welcome to the store [v. 1.1]");
 		
 		if(arguments.length > 1) {
@@ -20,6 +22,14 @@ public class BakeryStore {
 			cash = Double.parseDouble(arguments[4]);
 			
 		}
+		else {
+			price1 = input.readValue();
+			price2 = input.readValue();
+			amountBread = input.readValue();
+			amountRolls = input.readValue();
+			cash = input.readValue();
+		}
+		
 		
 		CustomerWallet wallet = new CustomerWallet(cash);
 		System.out.println("You currently have: " + wallet.getContents() + " EUR");
