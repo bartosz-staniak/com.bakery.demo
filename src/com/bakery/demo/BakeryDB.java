@@ -5,8 +5,7 @@ import java.sql.*;
 public class BakeryDB {
 	
 	public void Create() {
-		
-		System.setProperty("jdbc.drivers", "org.apache.derby.jdbc.ClientDriver");
+
 		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
 	
 		try(
