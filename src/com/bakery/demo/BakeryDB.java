@@ -12,10 +12,18 @@ public class BakeryDB {
 				Connection conn = DriverManager.getConnection
 					(dbaseURL)
 				) {
-			
+			try {
 			PreparedStatement ps = conn.prepareStatement("CREATE TABLE Prices "
 					+ "(ProductName CHAR(50),Price DECIMAL(5, 2))");
 			ps.execute();
+			} catch (SQLException sqlExists) {
+				String Error = (sqlExists).getSQLState();
+				if(Error.equals("X0Y32")) {
+					System.out.println("The table already exists.");
+				}
+				
+			}
+				
 		
 			} catch (SQLException se) {
 				se.printStackTrace();
