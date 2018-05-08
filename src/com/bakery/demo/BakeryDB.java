@@ -49,9 +49,36 @@ public class BakeryDB {
 				
 				ps.close();
 				conn.close();
-			} catch (SQLException sqe) {
-				System.out.println("SQL Exception: " + sqe.getMessage());
+			} catch (SQLException SQLe) {
+				System.out.println("SQL Exception: " + SQLe.getMessage());
 			}
+	}
+	
+	public void getProducts() {
+		
+		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
+		
+		try (
+				Connection conn = DriverManager.getConnection
+					(dbaseURL)
+				) {
+				
+			Statement s = conn.createStatement();
+			
+			ResultSet results = s.executeQuery(
+					"select ProductName, Price "
+					+ "from APP.PRICES "
+					+ "order by ProductName");
+			
+			while (results.next()) {
+				System.out.print("Product name: " + results.getString(1));
+				System.out.println("\tPrice: " + results.getString(2));
+			}
+			s.close();
+			conn.close();
+		} catch (SQLException SQLe) {
+			System.out.println("SQL Exception: " + SQLe.getMessage());
+		}
 	}
 	
 	public static void main(String[] arguments) {
@@ -59,6 +86,7 @@ public class BakeryDB {
 		BakeryDB db = new BakeryDB();
 		db.createDB();
 		db.addProduct("Bread", "4.0");
+		db.getProducts();
 	}
 }
 
