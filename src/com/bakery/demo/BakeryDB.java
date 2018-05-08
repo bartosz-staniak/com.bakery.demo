@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class BakeryDB {
 	
-	public void createDB() {
+	public boolean createDB() {
 
 		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
 	
@@ -22,6 +22,7 @@ public class BakeryDB {
 				String Error = (sqlExists).getSQLState();
 				if(Error.equals("X0Y32")) {
 					System.out.println("The table already exists.");
+					return true;
 				}
 			}
 				
@@ -31,6 +32,7 @@ public class BakeryDB {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		return false;
 	}
 	
 	public void addProduct(String ProductName, String ProductPrice) {
