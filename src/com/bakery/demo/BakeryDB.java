@@ -42,14 +42,14 @@ public class BakeryDB {
 					(dbaseURL)
 				) {
 			
-				PreparedStatement ps = conn.prepareStatement("insert into "
+				PreparedStatement psIns = conn.prepareStatement("insert into "
 						+ "PRICES(ProductName, Price) "
 						+ "values(?, ?)");
-				ps.setString(1, ProductName);
-				ps.setString(2, ProductPrice);
-				ps.executeUpdate();
+				psIns.setString(1, ProductName);
+				psIns.setString(2, ProductPrice);
+				psIns.executeUpdate();
 				
-				ps.close();
+				psIns.close();
 				conn.close();
 			} catch (SQLException SQLe) {
 				System.out.println("SQL Exception: " + SQLe.getMessage());
@@ -83,11 +83,34 @@ public class BakeryDB {
 		}
 	}
 	
+	public void updatePrice(String ProductName, String ProductPrice) {
+		
+		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
+		
+		try (
+				Connection conn = DriverManager.getConnection
+					(dbaseURL)
+				) {
+			
+			PreparedStatement psUpdate = conn.prepareStatement(
+					"UPDATE Prices SET Price=? "
+					+ "WHERE ProductName=?");
+			psUpdate.setString(1, ProductPrice);
+			psUpdate.setString(2, ProductName);
+			psUpdate.executeUpdate();
+			
+		} catch (SQLException SQLe) {
+			System.out.println("SQL Exception: " + SQLe.getMessage());
+		}
+	}
+	
 	public static void main(String[] arguments) {
 		
 		BakeryDB db = new BakeryDB();
 		db.createDB();
 		db.addProduct("BreadRoll", "0.50");
+		db.getProducts();
+		db.updatePrice("Bread", "3.30");
 		db.getProducts();
 	}
 }
