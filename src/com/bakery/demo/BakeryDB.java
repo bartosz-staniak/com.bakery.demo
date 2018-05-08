@@ -32,7 +32,7 @@ public class BakeryDB {
 			}
 	}
 	
-	public void addProduct(String ProductName, String ProductPrice) {
+	public void addProduct(String ProductName, String ProductPrice) { // the method does not work
 		
 		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
 		
@@ -42,7 +42,7 @@ public class BakeryDB {
 				) {
 			
 				PreparedStatement ps = conn.prepareStatement("insert into "
-						+ "APP.PRICES(ProductName, Price) "
+						+ "PRICES(ProductName, Price) "
 						+ "values(?, ?)");
 				ps.setString(1, ProductName);
 				ps.setString(2, ProductPrice);
@@ -67,7 +67,7 @@ public class BakeryDB {
 			
 			ResultSet results = s.executeQuery(
 					"select ProductName, Price "
-					+ "from APP.PRICES "
+					+ "from PRICES "
 					+ "order by ProductName");
 			
 			while (results.next()) {
