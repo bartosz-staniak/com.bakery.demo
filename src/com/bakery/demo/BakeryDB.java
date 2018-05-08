@@ -46,6 +46,9 @@ public class BakeryDB {
 						+ "values(?, ?)");
 				ps.setString(1, ProductName);
 				ps.setString(2, ProductPrice);
+				
+				ps.close();
+				conn.close();
 			} catch (SQLException sqe) {
 				System.out.println("SQL Exception: " + sqe.getMessage());
 			}
