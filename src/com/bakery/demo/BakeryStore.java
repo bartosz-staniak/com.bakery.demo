@@ -13,7 +13,7 @@ public class BakeryStore {
 		BakeryInput input = new BakeryInput();
 		BakeryDB db = new BakeryDB();
 		
-		System.out.println("Welcome to the store [v. 1.1]");
+		System.out.println("Welcome to the store [v. 1.4]");
 		
 		if (!db.createDB()) {
 			if(arguments.length > 1) {
