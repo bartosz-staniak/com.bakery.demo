@@ -13,11 +13,48 @@ public class BakeryDB {
 					(dbaseURL)
 				) {
 			try {
-			PreparedStatement ps = conn.prepareStatement("CREATE TABLE Prices "
+			PreparedStatement psPrices = conn.prepareStatement("CREATE TABLE Prices "
 					+ "(ProductName CHAR(50) NOT NULL PRIMARY KEY"
 					+ ",Price DECIMAL(5, 2) NOT NULL)");
-			ps.execute();
-			ps.close();
+
+			psPrices.execute();
+			psPrices.close();
+			
+			} catch (SQLException sqlExists) {
+				String Error = (sqlExists).getSQLState();
+				if(Error.equals("X0Y32")) {
+					System.out.println("The table already exists.");
+					return true;
+				}
+			}
+				
+			conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return false;
+	}
+	
+	public boolean createAllergensTable() {
+
+		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
+	
+		try(
+				Connection conn = DriverManager.getConnection
+					(dbaseURL)
+				) {
+			try {
+			
+			PreparedStatement psIngredients = conn.prepareStatement(
+					"CREATE TABLE Allergens(ProductName CHAR(50)"
+					+ "NOT NULL PRIMARY KEY, Eggs BIT, Milk BIT,"
+					+ " Tree_Nuts BIT, Corn BIT, Maize BIT, Wheat BIT)");
+
+			psIngredients.execute();
+			psIngredients.close();
+			
 			} catch (SQLException sqlExists) {
 				String Error = (sqlExists).getSQLState();
 				if(Error.equals("X0Y32")) {
@@ -110,6 +147,7 @@ public class BakeryDB {
 		
 		BakeryDB db = new BakeryDB();
 		db.createDB();
+		db.createAllergensTable();
 		db.addProduct("BreadRoll", "0.50");
 		db.getProducts();
 		db.updatePrice("Bread", "3.30");
