@@ -16,6 +16,7 @@ public class BakeryDB {
 			PreparedStatement ps = conn.prepareStatement("CREATE TABLE Prices "
 					+ "(ProductName CHAR(50),Price DECIMAL(5, 2))");
 			ps.execute();
+			ps.close();
 			} catch (SQLException sqlExists) {
 				String Error = (sqlExists).getSQLState();
 				if(Error.equals("X0Y32")) {
