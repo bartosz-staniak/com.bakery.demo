@@ -14,7 +14,8 @@ public class BakeryDB {
 				) {
 			try {
 			PreparedStatement ps = conn.prepareStatement("CREATE TABLE Prices "
-					+ "(ProductName CHAR(50),Price DECIMAL(5, 2))");
+					+ "(ProductName CHAR(50) NOT NULL PRIMARY KEY"
+					+ ",Price DECIMAL(5, 2) NOT NULL)");
 			ps.execute();
 			ps.close();
 			} catch (SQLException sqlExists) {
@@ -86,7 +87,7 @@ public class BakeryDB {
 		
 		BakeryDB db = new BakeryDB();
 		db.createDB();
-		db.addProduct("Bread", "4.0");
+		db.addProduct("BreadRoll", "0.50");
 		db.getProducts();
 	}
 }
