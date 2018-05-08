@@ -2,7 +2,7 @@ package com.bakery.demo;
 
 public class BakeryStore {
 	public static void main(String[] arguments) {
-		BakeryPrices prices;
+//		BakeryPrices prices; //Obsolete due to database presence
 		double price1 = 0;
 		double price2 = 0;
 		double amountBread = 0;
@@ -11,6 +11,7 @@ public class BakeryStore {
 		double totalOrderValue = 0;
 		
 		BakeryInput input = new BakeryInput();
+		BakeryDB db = new BakeryDB();
 		
 		System.out.println("Welcome to the store [v. 1.1]");
 		
@@ -30,11 +31,15 @@ public class BakeryStore {
 			price2 = input.readValue();
 			
 		}
+		db.addProduct("Bread", String.valueOf(price1));
+		db.addProduct("Bread roll", String.valueOf(price2));
 		
 		System.out.println("How much money can you spend on shopping: ");
 		cash = input.readValue();
 		CustomerWallet wallet = new CustomerWallet(cash);
 		System.out.println("You currently have: " + wallet.getContents() + " EUR");
+		
+		db.getProducts();
 		
 		System.out.println("How many loafs of bread "
 				+ "would you like to buy?");
@@ -43,11 +48,13 @@ public class BakeryStore {
 				+ "would you like to buy?");
 		amountRolls = input.readValue();
 		
-		
+	/*	// Obsolete due to DB presence
 		prices = new BakeryPrices(
 					price1, price2);
 		
 		prices.ShowPrices();
+	*/	
+		
 		
 		BasketCalculator basket = new BasketCalculator(price1, price2,
 				amountBread, amountRolls);
