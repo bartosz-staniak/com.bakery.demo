@@ -1,5 +1,5 @@
 # Bakery program
 
-Git repo demo
+A simple demo application.
 
-Application meets requirements. Promoting to 1.2.
+Database functionality added. Promoting to 1.4.
