@@ -49,13 +49,15 @@ public class BakeryDB {
 			
 			PreparedStatement psIngredients = conn.prepareStatement(
 					"CREATE TABLE Allergens(ProductName CHAR(50)"
-					+ "NOT NULL PRIMARY KEY, Eggs BIT, Milk BIT,"
-					+ " Tree_Nuts BIT, Corn BIT, Maize BIT, Wheat BIT)");
+					+ "NOT NULL PRIMARY KEY, Eggs BOOLEAN, Milk BOOLEAN,"
+					+ " TreeNuts BOOLEAN, Corn BOOLEAN, "
+					+ "Maize BOOLEAN, Wheat BOOLEAN)");
 
 			psIngredients.execute();
 			psIngredients.close();
 			
 			} catch (SQLException sqlExists) {
+				System.out.println("Problem");
 				String Error = (sqlExists).getSQLState();
 				if(Error.equals("X0Y32")) {
 					System.out.println("The table already exists.");
@@ -148,7 +150,7 @@ public class BakeryDB {
 		BakeryDB db = new BakeryDB();
 		db.createDB();
 		db.createAllergensTable();
-		db.addProduct("BreadRoll", "0.50");
+		db.addProduct("RollBread", "9.50");
 		db.getProducts();
 		db.updatePrice("Bread", "3.30");
 		db.getProducts();
