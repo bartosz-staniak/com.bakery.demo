@@ -177,15 +177,60 @@ public class BakeryDB {
 		}
 	}
 	
+	public void filterByAllergen(String allergenName) {
+		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
+		
+		try (
+				Connection conn = DriverManager.getConnection
+					(dbaseURL)
+				) {
+			
+			PreparedStatement psFilter = conn.prepareStatement(
+					"SELECT Prices.ProductName, Allergens.Eggs, "
+					+ "Allergens.Milk, Allergens.TreeNuts, "
+					+ "Allergens.Corn, Allergens.Maize, "
+					+ "Allergens.Wheat "
+					+ "FROM Prices "
+					+ "INNER JOIN Allergens "
+					+ "ON Prices.ProductName = Allergens.ProductName "
+					+ "WHERE (?) = TRUE");
+			psFilter.setString(1, allergenName);
+			ResultSet results = psFilter.executeQuery();
+			
+			while(results.next()) {
+				System.out.println("Product Name: " + results.getString(1));
+				System.out.println("Eggs: " + results.getBoolean(2));
+				System.out.println("Milk " + results.getBoolean(3));
+				System.out.println("Tree Nuts: " + results.getBoolean(4));
+				System.out.println("Corn: " + results.getBoolean(5));
+				System.out.println("Maize: " + results.getBoolean(6));
+				System.out.println("Wheat: " + results.getBoolean(7));
+			}
+			
+			psFilter.close();
+			conn.close();
+			
+		} catch (SQLException SQLe) {
+			 System.out.println("SQL Exception: " + SQLe.getMessage());
+			 SQLe.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] arguments) {
 		
 		BakeryDB db = new BakeryDB();
 		db.createDB();
 		db.createAllergensTable();
+		db.addAllergens("Cake", "False", "True", "False", "True", "False", "True");
+		db.addAllergens("Bread", "True", "True", "True", "True", "True", "True");
 		db.addProduct("RollBread", "9.50");
+		db.addProduct("Cake", "20.00");
+		db.addProduct("BreadRoll", "0.35");
+		db.addProduct("Bread", "3.50");
 		db.getProducts();
 		db.updatePrice("Bread", "3.30");
 		db.getProducts();
+		db.filterByAllergen("Wheat");
 	}
 }
 
