@@ -97,6 +97,38 @@ public class BakeryDB {
 			}
 	}
 	
+	public void addAllergens(String ProductName, String BoolEggs, String BoolMilk, 
+			String BoolTreeNuts, String BoolCorn, String BoolMaize,
+			String BoolWheat) {
+		
+		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
+		
+		try (
+				Connection conn = DriverManager.getConnection
+					(dbaseURL)
+				) {
+			
+				PreparedStatement psIns = conn.prepareStatement("insert into " 
+						+ "Allergens(ProductName ,Eggs, Milk, " 
+						+ "TreeNuts , Corn, Maize, Wheat) "
+						+ "values (?, ?, ?, ?, ?, ?, ?)");
+				psIns.setString(1, ProductName);
+				psIns.setString(2, BoolEggs);
+				psIns.setString(3, BoolMilk);
+				psIns.setString(4, BoolTreeNuts);
+				psIns.setString(5, BoolCorn);
+				psIns.setString(6, BoolMaize);
+				psIns.setString(7, BoolWheat);
+				
+				psIns.executeUpdate();
+				
+				psIns.close();
+				conn.close();
+			} catch (SQLException SQLe) {
+				System.out.println("SQL Exception: " + SQLe.getMessage());
+			}
+	}
+	
 	public void getProducts() {
 		
 		String dbaseURL = "jdbc:derby://localhost:1527/BakeryDB;create=true";
