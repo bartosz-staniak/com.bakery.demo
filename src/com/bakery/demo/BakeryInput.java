@@ -24,11 +24,10 @@ public class BakeryInput {
  	
 public String readString() {
  		
- 		BufferedReader b_buffer = new BufferedReader(
- 				new InputStreamReader(System.in));
- 		
  		String original = "";
-		try {
+		
+ 		try (BufferedReader b_buffer = new BufferedReader(
+ 				new InputStreamReader(System.in))) {
 			original = b_buffer.readLine();
 		} catch (IOException e) {
 			System.out.println("Exception: " + e.getMessage());
