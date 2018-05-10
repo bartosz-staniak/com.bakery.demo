@@ -49,7 +49,9 @@ public class BakeryStore {
 			db.updatePrice("Bread", String.valueOf(price1));
 			db.updatePrice("Bread roll", String.valueOf(price2));
 		}
+		
 		db.createAllergensTable();
+		
 		System.out.println("How much money can you spend on shopping: ");
 		cash = input.readValue();
 		CustomerWallet wallet = new CustomerWallet(cash);
