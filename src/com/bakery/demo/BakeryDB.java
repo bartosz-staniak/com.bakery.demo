@@ -200,12 +200,12 @@ public class BakeryDB {
 			
 			while(results.next()) {
 				System.out.print("Product Name: " + results.getString(1));
-				System.out.print(" Eggs: " + results.getBoolean(2));
-				System.out.print(" Milk: " + results.getBoolean(3));
-				System.out.print(" Tree Nuts: " + results.getBoolean(4));
-				System.out.print(" Corn: " + results.getBoolean(5));
-				System.out.print(" Maize: " + results.getBoolean(6));
-				System.out.println(" Wheat: " + results.getBoolean(7));
+				System.out.print(" |Eggs: " + results.getBoolean(2) + "|");
+				System.out.print(" |Milk: " + results.getBoolean(3) + "|");
+				System.out.print(" |Tree Nuts: " + results.getBoolean(4) + "|");
+				System.out.print(" |Corn: " + results.getBoolean(5) + "|");
+				System.out.print(" |Maize: " + results.getBoolean(6) + "|");
+				System.out.println(" |Wheat: " + results.getBoolean(7) + "|");
 			}
 			
 			psFilter.close();
