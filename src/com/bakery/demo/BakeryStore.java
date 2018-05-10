@@ -58,6 +58,8 @@ public class BakeryStore {
 		System.out.println("You currently have: " + wallet.getContents() + " EUR");
 		
 		db.getProducts();
+		BakeryShowProducts showProducts = new BakeryShowProducts();
+		showProducts.chooseMethod();
 		
 		System.out.println("How many loafs of bread "
 				+ "would you like to buy?");
