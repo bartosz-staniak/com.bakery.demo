@@ -193,18 +193,18 @@ public class BakeryDB {
 					+ "FROM Prices "
 					+ "INNER JOIN Allergens "
 					+ "ON Prices.ProductName = Allergens.ProductName "
-					+ "WHERE (?) = TRUE");
-			psFilter.setString(1, allergenName);
+					+ "WHERE milk = TRUE");
+		//	psFilter.setString(1, allergenName);
 			ResultSet results = psFilter.executeQuery();
 			
 			while(results.next()) {
-				System.out.println("Product Name: " + results.getString(1));
-				System.out.println("Eggs: " + results.getBoolean(2));
-				System.out.println("Milk " + results.getBoolean(3));
-				System.out.println("Tree Nuts: " + results.getBoolean(4));
-				System.out.println("Corn: " + results.getBoolean(5));
-				System.out.println("Maize: " + results.getBoolean(6));
-				System.out.println("Wheat: " + results.getBoolean(7));
+				System.out.print("Product Name: " + results.getString(1));
+				System.out.print(" Eggs: " + results.getBoolean(2));
+				System.out.print(" Milk: " + results.getBoolean(3));
+				System.out.print(" Tree Nuts: " + results.getBoolean(4));
+				System.out.print(" Corn: " + results.getBoolean(5));
+				System.out.print(" Maize: " + results.getBoolean(6));
+				System.out.println(" Wheat: " + results.getBoolean(7));
 			}
 			
 			psFilter.close();
@@ -230,7 +230,7 @@ public class BakeryDB {
 		db.getProducts();
 		db.updatePrice("Bread", "3.30");
 		db.getProducts();
-		db.filterByAllergen("Wheat");
+		db.filterByAllergen("milk");
 	}
 }
 
