@@ -22,6 +22,23 @@ public class BakeryInput {
 
  	}
  	
+public String readString() {
+ 		
+ 		BufferedReader b_buffer = new BufferedReader(
+ 				new InputStreamReader(System.in));
+ 		
+ 		String original = "";
+		try {
+			original = b_buffer.readLine();
+		} catch (IOException e) {
+			System.out.println("Exception: " + e.getMessage());
+			e.printStackTrace();
+		}
+ 		
+ 	return original;
+
+ 	}
+ 	
 
 	public static void main(String[] arguments) {
 		
