@@ -185,16 +185,17 @@ public class BakeryDB {
 					(dbaseURL)
 				) {
 			
-			PreparedStatement psFilter = conn.prepareStatement(
-					"SELECT Prices.ProductName, Allergens.Eggs, "
+			StringBuilder query = new StringBuilder();
+			query.append("SELECT Prices.ProductName, Allergens.Eggs, "
 					+ "Allergens.Milk, Allergens.TreeNuts, "
 					+ "Allergens.Corn, Allergens.Maize, "
 					+ "Allergens.Wheat "
 					+ "FROM Prices "
 					+ "INNER JOIN Allergens "
-					+ "ON Prices.ProductName = Allergens.ProductName "
-					+ "WHERE milk = TRUE");
-		//	psFilter.setString(1, allergenName);
+					+ "ON Prices.ProductName = Allergens.ProductName ");
+			query.append("WHERE " + allergenName + " = True");
+			PreparedStatement psFilter = conn.prepareStatement(query.toString());
+
 			ResultSet results = psFilter.executeQuery();
 			
 			while(results.next()) {
