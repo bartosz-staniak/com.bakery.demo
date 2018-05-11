@@ -19,13 +19,13 @@ public class BakeryShowProducts {
 			allergenName = stringInput.readString();
 			boolean exists = false;
 			int i = 0;
-			while (exists == false && i < allergens.length) {
-				if ( allergenName.equals(allergens[i]) ) {
+			while (exists == false && i <= allergens.length) {
+				if ( (i < allergens.length) && (allergenName.equals(allergens[i])) ) {
 					exists = true;
 					db.filterByAllergen(allergenName);
 					return;
 				}
-				else if (exists == false && i >= allergens.length) {
+				else if ( (exists == false) && (i >= allergens.length) ) {
 					System.out.println("Unable to verify presence"
 							+ "of the specified allergen\n."
 							+ "We know of the following allergnes"
