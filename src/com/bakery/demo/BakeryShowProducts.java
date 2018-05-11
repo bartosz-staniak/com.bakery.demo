@@ -2,6 +2,7 @@ package com.bakery.demo;
 
 public class BakeryShowProducts {
 	public void chooseMethod() {
+		String[] allergens = {"Eggs", "Milk", "Tree Nuts", "Corn", "Maize", "Wheat"};
 		String allergenName = "";
 		String answer = "";
 		BakeryInput stringInput = new BakeryInput();
@@ -16,7 +17,25 @@ public class BakeryShowProducts {
 			System.out.println("Type the name of the allergen "
 					+ "and press enter:");
 			allergenName = stringInput.readString();
-			db.filterByAllergen(allergenName);
+			boolean exists = false;
+			int i = 0;
+			while (exists == false && i < allergens.length) {
+				if ( allergenName.equals(allergens[i]) ) {
+					exists = true;
+					db.filterByAllergen(allergenName);
+					return;
+				}
+				else if (exists == false && i >= allergens.length) {
+					System.out.println("Unable to verify presence"
+							+ "of the specified allergen\n."
+							+ "We know of the following allergnes"
+							+ "present in our products: Eggs, Milk, "
+							+ "Tree Nuts, Corn, Maize, Wheat");
+				}
+				else
+				i++;
+			}
+			
 		}
 	}
 }
