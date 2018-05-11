@@ -12,7 +12,7 @@ public class BakeryShowProducts {
 				+ "If yes press 'y' key and press enter.");
 		answer = stringInput.readString();
 		System.out.println(answer);
-		if (answer == "y") {
+		if ( answer.equals("y") ) {
 			System.out.println("Type the name of the allergen "
 					+ "and press enter:");
 			allergenName = stringInput.readString();
